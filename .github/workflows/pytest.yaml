@@ -24,8 +24,8 @@ jobs:
       - name: Install dependencies
         run: |
           python3 -m pip install --upgrade pip
-          python3 -m pip install -e .
-          python3 -m pip install pytest
+          python3 -m pip install poetry
+          poetry install --with dev --extras 'doc lint test'
 
       - name: Run pytest
         run: |
