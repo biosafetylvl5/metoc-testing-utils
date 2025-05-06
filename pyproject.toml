@@ -6,7 +6,7 @@ authors = ["Gwyn Uttmark <biosafetylevel5@gmail.com>"]
 license = "TODO"
 repository = "https://github.com/biosafetylvl5/metoc-testing-utils"
 
-packages = [{include="metoc-testing-utils", from="src"}]
+packages = [{include="metoc_testing_utils", from="src"}]
 
 readme = "README.md"
 classifiers = [
@@ -24,14 +24,15 @@ classifiers = [
 
 [tool.poetry.dependencies] # must download to run
 python = ">=3.8,<4.0"  # Specify upper bound to prevent Python 4 compatibility issues (lol, it'll be fun when python 4 comes out)
-rich
-rich-argparse
+rich = "*"
+rich-argparse = "*"
+xarray = "*"
 
 # Doc group
-sphinx = { version = "^7.2.0", optional = true }
+sphinx = { version = "*", optional = true }
 sphinxcontrib-runcmd = { version = "*", optional = true }
 sphinxcontrib-napoleon = { version = "*", optional = true }
-sphinx-argparse = { version = "^0.4.0", optional = true }
+sphinx-argparse = { version = "*", optional = true }
 
 [tool.poetry.group.dev.dependencies]
 # Development dependencies that are always installed for development
@@ -45,10 +46,10 @@ brassy = "*"
 
 [tool.poetry.extras]
 doc = [
-    "sphinx",                    # for docs buildin
-    "sphinxcontrib-runcmd",      # for docs buildin
-    "sphinxcontrib-napoleon",    # for docs buildin
-    "sphinx-argparse",           # for docs buildin
+    "sphinx",                    # for docs building
+    "sphinxcontrib-runcmd",      # for docs building
+    "sphinxcontrib-napoleon",    # for docs building
+    "sphinx-argparse",           # for docs building
     "pinkrst",                   # for rst formatting
     "doc8",                      # for rst linting
     "brassy",                    # for changelog rendering
@@ -83,7 +84,7 @@ target-version = "py311"
 line-length = 88
 
 # Enable a wide range of rules
-select = [
+lint.select = [
     "E", "F", "W",  # pycodestyle and Pyflakes
     "I",            # isort
     "N",            # PEP8 naming
@@ -96,7 +97,6 @@ select = [
     "ERA",          # eradicate
     "PL",           # Pylint
     "RUF",          # Ruff-specific rules
-    "TCH",          # flake8-type-checking
     "S",            # flake8-bandit (security)
     "A",            # flake8-builtins
     "COM",          # flake8-commas
@@ -105,18 +105,18 @@ select = [
     "TRY",          # tryceratops (exception handling)
 ]
 
-ignore = [
+lint.ignore = [
     "D203",  # one-blank-line-before-class (conflicts with D211)
     "D212",  # multi-line-summary-first-line (conflicts with D213)
     "E731",  # allow variable assigned lambdas (PLEASE!!)
 ]
 
 # Allow fix for all enabled rules (when `--fix`) is provided.
-fixable = ["ALL"]
-unfixable = []
+lint.fixable = ["ALL"]
+lint.unfixable = []
 
 # Allow unused variables when underscore-prefixed.
-dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+lint.dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 
 [tool.ruff.format]
 # Like Black, use double quotes for strings.
@@ -131,7 +131,7 @@ line-ending = "lf"
 [tool.ruff.lint.pydocstyle]
 convention = "numpy"
 
-[tool.ruff.mccabe]
+[tool.ruff.lint.mccabe]
 max-complexity = 5
 
 [tool.ruff.lint.flake8-tidy-imports]

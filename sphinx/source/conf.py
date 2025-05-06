@@ -1,15 +1,16 @@
-# Configuration file for the Sphinx documentation builder.
-#
-# For the full list of built-in configuration values, see the documentation:
-# https://www.sphinx-doc.org/en/master/usage/configuration.html
+"""Configuration file for the Sphinx documentation builder.
 
-# -- Project information -----------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
+For the full list of built-in configuration values, see the documentation:
+https://www.sphinx-doc.org/en/master/usage/configuration.html
 
+Project information can be found at:
+https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
+"""
 
-import sys, os
+import sys
+from pathlib import Path
 
-sys.path.insert(0, os.path.abspath("../../metoc-testing-utils"))
+sys.path.insert(0, Path.resolve("../../metoc-testing-utils"))
 
 project = "metoc-testing-utils"
 author = "Gwyn Uttmark"
