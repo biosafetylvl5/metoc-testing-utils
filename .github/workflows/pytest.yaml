@@ -29,4 +29,5 @@ jobs:
 
       - name: Run pytest
         run: |
+          eval $(poetry env activate)
           python3 -m pytest
