@@ -1,8 +1,8 @@
-"""
-TODO.
-"""
+"""TODO."""
 
-def hello_world():
+
+def hello_world() -> None:
+    """Print hello world."""
     print("Hello world! :)")
 
 
